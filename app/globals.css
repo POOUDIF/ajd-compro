@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #191970;
+  --accent: #B22222;
+  --blue-primary: #191970;
+  --red-accent: #B22222;
+  --white-pure: #FFFFFF;
+  --light-gray: #F8F9FA;
 }
 
 @theme inline {
@@ -12,15 +17,139 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red-accent);
+}
+
+/* Loading animation untuk gambar */
+.loading-fade {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slideshow animations */
+.slideshow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-enter {
+  animation: slideEnter 1s ease-in-out;
+}
+
+.slide-exit {
+  animation: slideExit 1s ease-in-out;
+}
+
+@keyframes slideEnter {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideExit {
+  from {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Progress bar animation */
+.progress-bar {
+  animation: progressFill 2s linear infinite;
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Pause animation when hovered */
+.slideshow-container:hover .progress-bar {
+  animation-play-state: paused;
+}
+
+/* Audio Control Slider Styling */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid var(--blue-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.slider::-webkit-slider-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+
+.slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+
+.slider::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid var(--blue-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.slider::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
 }
